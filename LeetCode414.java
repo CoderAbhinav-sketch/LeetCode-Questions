@@ -1,0 +1,29 @@
+
+414. Third Maximum Number
+
+class Solution {
+    public int thirdMax(int[] nums) {
+        int n = nums.length;
+        Arrays.sort(nums);
+        int i = 0;
+        int j = n-1;
+        while(i<j){
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+
+            i++;
+            j--;
+        }
+        int elecount = 1;
+        for(int k = 1;k<n;k++){
+            if(nums[k] != nums[k-1]){
+                elecount++;
+            }
+            if(elecount == 3){
+                return nums[k];
+            }
+        }
+        return nums[0];
+    }
+}
